@@ -9,7 +9,7 @@ Regular timers are very useful for tasks that do not really require any precisio
 
 Fire a timer event every 10 minutes from Monday through Friday between 8:00 and 17:00
 
-```
+```c#
 var timer = new CronTimer("*/10 08-17 * * 1-5", "Europe/Amsterdam", includingSeconds: false);
 timer.OnOccurence += (s, ea) => Console.Out.WriteLineAsync(ea + " - " + DateTime.Now);
 timer.Start();
