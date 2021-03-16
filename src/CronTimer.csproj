@@ -8,7 +8,7 @@
 
   <PropertyGroup>
 	  <!-- AssemblyFileVersionAttribute -->
-	  <FileVersion>1.0.0</FileVersion>
+	  <FileVersion>1.0.1</FileVersion>
 	  <!-- AssemblyInformationalVersionAttribute -->
 	  <Version>$(FileVersion)</Version>
 	  <!-- AssemblyVersionAttribute -->
@@ -27,7 +27,7 @@
 	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	  <IncludeSource>True</IncludeSource>
 	  <RepositoryUrl>https://github.com/ramonsmits/CronTimer</RepositoryUrl>
-	  <Copyright>Copyright 2020 (c) Ramon Smits</Copyright>
+	  <Copyright>Copyright 2021 (c) Ramon Smits</Copyright>
 	  <PackageTags>cron timer</PackageTags>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -37,7 +37,7 @@
 
   <ItemGroup>
     <PackageReference Include="ncrontab" Version="[3.3.1, 4.0.0)" />
-    <PackageReference Include="TimeZoneConverter" Version="[3.2.0, 4.0.0)" />
+    <PackageReference Include="TimeZoneConverter" Version="[3.4.0, 4.0.0)" />
   </ItemGroup>
 
   <!--<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
