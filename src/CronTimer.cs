@@ -12,7 +12,7 @@ public class CronTimer
     readonly CrontabSchedule schedule;
     readonly TimeZoneInfo tzi;
     readonly string id;
-    Timer t;
+    readonly Timer t;
 
     public string tz { get; }
     public string Expression { get; }
@@ -26,6 +26,7 @@ public class CronTimer
         tzi = TimeZoneInfo.FindSystemTimeZoneById(id);
         schedule = CrontabSchedule.Parse(expression, new CrontabSchedule.ParseOptions { IncludingSeconds = includingSeconds });
         OnOccurence += OnOccurenceScheduleNext;
+        t = new Timer(s => OnOccurence(this, ea), null, InfiniteTimeSpan, InfiniteTimeSpan);
     }
 
     void OnOccurenceScheduleNext(object sender, EventArgs e)
@@ -39,7 +40,7 @@ public class CronTimer
     {
         var delay = CalculateDelay();
         //Console.WriteLine($"Next for [{tz} {expression}] in {delay}.");
-        t = new Timer(s => OnOccurence(this, ea), null, delay, InfiniteTimeSpan);
+        t.Change(delay, InfiniteTimeSpan);
     }
 
     TimeSpan CalculateDelay()
@@ -66,6 +67,6 @@ public class CronTimer
 
     public void Stop()
     {
-        t.Dispose();
+        t.Change(InfiniteTimeSpan, InfiniteTimeSpan);
     }
 }
