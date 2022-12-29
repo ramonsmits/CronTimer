@@ -7,7 +7,6 @@ public class CronTimer
     public const string UTC = "Etc/UTC";
 
     static readonly TimeSpan InfiniteTimeSpan = TimeSpan.FromMilliseconds(Timeout.Infinite); // net 3.5
-    static readonly EventArgs ea = new EventArgs();
 
     readonly CrontabSchedule schedule;
     readonly TimeZoneInfo tzi;
@@ -16,7 +15,9 @@ public class CronTimer
 
     public string tz { get; }
     public string Expression { get; }
-    public event EventHandler<EventArgs> OnOccurence;
+    public event EventHandler<CronTimerEventArgs> OnOccurence;
+
+    public DateTime Next { get; private set; }
 
     public CronTimer(string expression, string tz = UTC, bool includingSeconds = false)
     {
@@ -25,8 +26,16 @@ public class CronTimer
         id = TimeZoneConverter.TZConvert.IanaToWindows(tz);
         tzi = TimeZoneInfo.FindSystemTimeZoneById(id);
         schedule = CrontabSchedule.Parse(expression, new CrontabSchedule.ParseOptions { IncludingSeconds = includingSeconds });
+        Next = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, tzi);
         OnOccurence += OnOccurenceScheduleNext;
-        t = new Timer(s => OnOccurence(this, ea), null, InfiniteTimeSpan, InfiniteTimeSpan);
+        t = new Timer(s =>
+        {
+            var ea = new CronTimerEventArgs
+            {
+                At = Next
+            };
+            OnOccurence(this, ea);
+        }, null, InfiniteTimeSpan, InfiniteTimeSpan);
     }
 
     void OnOccurenceScheduleNext(object sender, EventArgs e)
