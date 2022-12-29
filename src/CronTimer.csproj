@@ -36,7 +36,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ncrontab" Version="[3.3.1, 4.0.0)" />
+    <PackageReference Include="ncrontab" Version="3.3.1" />
     <PackageReference Include="TimeZoneConverter" Version="6.0.1" />
   </ItemGroup>
 
