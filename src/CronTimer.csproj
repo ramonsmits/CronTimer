@@ -28,6 +28,7 @@
     <PackageId>CronTimer</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/ramonsmits/CronTimer/tree/$(PackageVersion)</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>cron timer</PackageTags>
@@ -48,4 +49,7 @@
     </PackageReference>
   </ItemGroup>-->
 
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>
