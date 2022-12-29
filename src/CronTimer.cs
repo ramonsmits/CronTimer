@@ -54,20 +54,16 @@ public class CronTimer
 
     TimeSpan CalculateDelay()
     {
+        var nowUtc = DateTime.UtcNow;
+        Next = schedule.GetNextOccurrence(Next);
         TimeSpan delay;
         if (tz != UTC)
         {
-            var nowUtc = DateTime.UtcNow;
-            var now = TimeZoneInfo.ConvertTimeFromUtc(nowUtc, tzi);
-            var next = schedule.GetNextOccurrence(now);
-            var nextUtc = next.ToUniversalTime();
-            delay = nextUtc - nowUtc;
+            delay = Next.ToUniversalTime() - nowUtc;
         }
         else
         {
-            var nowUtc = DateTime.UtcNow;
-            var nextUtc = schedule.GetNextOccurrence(nowUtc);
-            delay = nextUtc - nowUtc;
+            delay = Next - nowUtc;
         }
         //Console.WriteLine($"Now: {nowUtc} [utc] {now} [{tz}], Next: {next} [{tz}] {nextUtc} [utc], Delay: {delay}");
         if (delay < TimeSpan.Zero) delay = TimeSpan.Zero;
