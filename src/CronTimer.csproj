@@ -7,32 +7,32 @@
   </PropertyGroup>
 
   <PropertyGroup>
-	  <!-- AssemblyFileVersionAttribute -->
-	  <FileVersion>1.0.1</FileVersion>
-	  <!-- AssemblyInformationalVersionAttribute -->
-	  <Version>$(FileVersion)</Version>
-	  <!-- AssemblyVersionAttribute -->
-	  <AssemblyVersion>1.0.0.0</AssemblyVersion>
-	  <!-- Nuget -->
-	  <PackageVersion>$(Version)</PackageVersion>
-	  <PackageId>CronTimer</PackageId>
-	  <Company>https://github.com/ramonsmits</Company>
-	  <Authors>ramonsmits</Authors>
-	  <Description>Simple .net Timer that is based on cron expressions with second accuracy to fire timer events to a very specific schedule.</Description>
-	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-	  <PackageReleaseNotes></PackageReleaseNotes>
-	  <PackageProjectUrl>https://github.com/ramonsmits/CronTimer/tree/$(PackageVersion)</PackageProjectUrl>
-	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
-	  <IncludeSymbols>True</IncludeSymbols>
-	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-	  <IncludeSource>True</IncludeSource>
-	  <RepositoryUrl>https://github.com/ramonsmits/CronTimer</RepositoryUrl>
-	  <Copyright>Copyright 2021 (c) Ramon Smits</Copyright>
-	  <PackageTags>cron timer</PackageTags>
-	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
-	  <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-	  <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <!-- AssemblyFileVersionAttribute -->
+    <FileVersion>1.0.1</FileVersion>
+    <!-- AssemblyInformationalVersionAttribute -->
+    <Version>$(FileVersion)</Version>
+    <!-- AssemblyVersionAttribute -->
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <!-- Nuget -->
+    <PackageVersion>$(Version)</PackageVersion>
+    <PackageId>CronTimer</PackageId>
+    <Company>https://github.com/ramonsmits</Company>
+    <Authors>ramonsmits</Authors>
+    <Description>Simple .net Timer that is based on cron expressions with second accuracy to fire timer events to a very specific schedule.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/ramonsmits/CronTimer/tree/$(PackageVersion)</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <IncludeSymbols>True</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <IncludeSource>True</IncludeSource>
+    <RepositoryUrl>https://github.com/ramonsmits/CronTimer</RepositoryUrl>
+    <Copyright>Copyright 2021 (c) Ramon Smits</Copyright>
+    <PackageTags>cron timer</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
   </PropertyGroup>
 
   <ItemGroup>
