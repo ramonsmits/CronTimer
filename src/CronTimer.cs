@@ -59,7 +59,8 @@ public class CronTimer
         TimeSpan delay;
         if (tz != UTC)
         {
-            delay = Next.ToUniversalTime() - nowUtc;
+            var nextUtc = TimeZoneInfo.ConvertTimeToUtc(Next, tzi);
+            delay = nextUtc - nowUtc;
         }
         else
         {
