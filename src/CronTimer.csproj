@@ -9,19 +9,15 @@
   <PropertyGroup>
     <Authors>ramonsmits</Authors>
     <Company>https://github.com/ramonsmits</Company>
-    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
-    <Copyright>Copyright 2022 (c) Ramon Smits</Copyright>
+    <ContinuousIntegrationBuild Condition="'$(CI)' == 'true'">true</ContinuousIntegrationBuild>
+    <Copyright>Copyright (c) Ramon Smits</Copyright>
     <Description>Simple .net Timer that is based on cron expressions with second accuracy to fire timer events to a very specific schedule.</Description>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <IncludeSource>True</IncludeSource>
-    <IncludeSymbols>True</IncludeSymbols>
+    <IncludeSymbols>true</IncludeSymbols>
     <PackageId>CronTimer</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/ramonsmits/CronTimer/tree/$(Version)</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes></PackageReleaseNotes>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>cron timer</PackageTags>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryUrl>https://github.com/ramonsmits/CronTimer</RepositoryUrl>
@@ -29,6 +25,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
     <PackageReference Include="MinVer" Version="6.0.0" PrivateAssets="All" />
     <PackageReference Include="ncrontab" Version="3.3.3" />
     <PackageReference Include="TimeZoneConverter" Version="6.1.0" />

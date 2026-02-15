@@ -21,6 +21,9 @@ Bug fixes for timezone handling and restart behavior, plus new TimeProvider supp
 
 ### Internal
 
+- Add SourceLink for debugger source mapping (579e119)
+- Condition `ContinuousIntegrationBuild` on CI only (579e119)
+- Remove broken `PackageProjectUrl` and redundant `IncludeSource` (579e119)
 - Migrate to `.slnx` solution format (98a64d7)
 - Use MinVer for version derivation from git tags (ef739e7)
 - Add justfile with build, test, and pack recipes (7ed9536)
