@@ -16,6 +16,14 @@ build *args='':
 build-release:
     dotnet build {{solution}} -c Release
 
+# Run tests
+test *args='':
+    dotnet test {{solution}} {{args}}
+
+# Run tests in Release configuration
+test-release:
+    dotnet test {{solution}} -c Release
+
 # Pack the NuGet package
 pack *args='':
     dotnet pack {{solution}} {{args}}
