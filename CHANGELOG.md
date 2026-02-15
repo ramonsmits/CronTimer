@@ -4,8 +4,6 @@ All notable changes to CronTimer are documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/) and this project adheres to [Semantic Versioning](https://semver.org/).
 
-## [Unreleased]
-
 ## [2.1.0] - 2026-02-15
 
 Bug fixes for timezone handling and restart behavior, plus new TimeProvider support for testability on net8.0+.
