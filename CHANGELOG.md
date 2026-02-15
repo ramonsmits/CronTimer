@@ -19,6 +19,11 @@ Bug fixes for timezone handling and restart behavior, plus new TimeProvider supp
 - Fix timezone conversion using configured timezone instead of system timezone — `ToUniversalTime()` incorrectly used the host timezone, causing wrong firing times when the host timezone differs from the configured one (522efd4)
 - Fix Start/Stop/Start skipping an interval — restarting the timer now recalculates the next occurrence from the current time (84f169f)
 
+### Package dependencies
+
+- Bump ncrontab from 3.3.1 to 3.4.0 ([#2](https://github.com/ramonsmits/CronTimer/pull/2))
+- Bump TimeZoneConverter from 6.0.1 to 7.2.0 ([#1](https://github.com/ramonsmits/CronTimer/pull/1))
+
 ### Internal
 
 - Add SourceLink for debugger source mapping (579e119)
@@ -29,11 +34,12 @@ Bug fixes for timezone handling and restart behavior, plus new TimeProvider supp
 - Add justfile with build, test, and pack recipes (7ed9536)
 - Add GitHub Actions CI workflow with Ubuntu and Windows jobs (7ed9536, 6e72f0e)
 - Add NUnit test project with TimeProvider-based testing (df7ca81)
-
-### Dependencies
-
-- Bump ncrontab from 3.3.1 to 3.3.3 ([#2](https://github.com/ramonsmits/CronTimer/pull/2)) (295c6a5)
-- Bump TimeZoneConverter from 6.0.1 to 6.1.0 ([#1](https://github.com/ramonsmits/CronTimer/pull/1)) (e4c335e)
+- Bump Microsoft.Extensions.TimeProvider.Testing from 9.0.0 to 10.3.0
+- Bump Microsoft.NET.Test.Sdk from 17.12.0 to 18.0.1
+- Bump Microsoft.SourceLink.GitHub from 8.0.0 to 10.0.103
+- Bump MinVer from 6.0.0 to 7.0.0
+- Bump NUnit from 4.3.2 to 4.4.0
+- Bump NUnit3TestAdapter from 4.6.0 to 6.1.0
 
 ## [2.0.0] - 2022-12-29
 
