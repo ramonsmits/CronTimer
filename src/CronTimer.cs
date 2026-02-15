@@ -47,6 +47,7 @@ public class CronTimer
 
     public void Start()
     {
+        Next = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, tzi);
         var delay = CalculateDelay();
         //Console.WriteLine($"Next for [{tz} {expression}] in {delay}.");
         t.Change(delay, InfiniteTimeSpan);
