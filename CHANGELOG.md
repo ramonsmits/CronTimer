@@ -6,6 +6,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/) and this 
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-02-15
+
 Bug fixes for timezone handling and restart behavior, plus new TimeProvider support for testability on net8.0+.
 
 ### Improvements
@@ -81,7 +83,8 @@ Fixes a crash when calling Stop and allows restarting a stopped timer.
 
 Initial release.
 
-[Unreleased]: https://github.com/ramonsmits/CronTimer/compare/2.0.0...HEAD
+[Unreleased]: https://github.com/ramonsmits/CronTimer/compare/2.1.0...HEAD
+[2.1.0]: https://github.com/ramonsmits/CronTimer/compare/2.0.0...2.1.0
 [2.0.0]: https://github.com/ramonsmits/CronTimer/compare/1.0.2...2.0.0
 [1.0.2]: https://github.com/ramonsmits/CronTimer/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/ramonsmits/CronTimer/compare/1.0.0...1.0.1
