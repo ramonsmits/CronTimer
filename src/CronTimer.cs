@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading;
 using NCrontab;
 
@@ -11,7 +11,12 @@ public class CronTimer
     readonly CrontabSchedule schedule;
     readonly TimeZoneInfo tzi;
     readonly string id;
+#if NET8_0_OR_GREATER
+    readonly TimeProvider timeProvider;
+    readonly ITimer t;
+#else
     readonly Timer t;
+#endif
 
     public string tz { get; }
     public string Expression { get; }
@@ -19,43 +24,61 @@ public class CronTimer
 
     public DateTime Next { get; private set; }
 
+#if NET8_0_OR_GREATER
+#nullable enable
+    public CronTimer(string expression, string tz = UTC, bool includingSeconds = false, TimeProvider? timeProvider = null)
+#nullable restore
+    {
+        this.timeProvider = timeProvider ?? TimeProvider.System;
+#else
     public CronTimer(string expression, string tz = UTC, bool includingSeconds = false)
     {
+#endif
         Expression = expression;
         this.tz = tz;
         id = TimeZoneConverter.TZConvert.IanaToWindows(tz);
         tzi = TimeZoneInfo.FindSystemTimeZoneById(id);
         schedule = CrontabSchedule.Parse(expression, new CrontabSchedule.ParseOptions { IncludingSeconds = includingSeconds });
-        Next = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, tzi);
+        Next = TimeZoneInfo.ConvertTimeFromUtc(UtcNow, tzi);
         OnOccurence += OnOccurenceScheduleNext;
-        t = new Timer(s =>
+        TimerCallback callback = s =>
         {
             var ea = new CronTimerEventArgs
             {
                 At = Next
             };
             OnOccurence(this, ea);
-        }, null, InfiniteTimeSpan, InfiniteTimeSpan);
+        };
+#if NET8_0_OR_GREATER
+        t = this.timeProvider.CreateTimer(callback, null, InfiniteTimeSpan, InfiniteTimeSpan);
+#else
+        t = new Timer(callback, null, InfiniteTimeSpan, InfiniteTimeSpan);
+#endif
     }
+
+    DateTime UtcNow =>
+#if NET8_0_OR_GREATER
+        timeProvider.GetUtcNow().UtcDateTime;
+#else
+        DateTime.UtcNow;
+#endif
 
     void OnOccurenceScheduleNext(object sender, EventArgs e)
     {
         var delay = CalculateDelay();
-        //Console.WriteLine($"Next for [{tz} {expression}] in {delay}.");
         t.Change(delay, InfiniteTimeSpan);
     }
 
     public void Start()
     {
-        Next = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, tzi);
+        Next = TimeZoneInfo.ConvertTimeFromUtc(UtcNow, tzi);
         var delay = CalculateDelay();
-        //Console.WriteLine($"Next for [{tz} {expression}] in {delay}.");
         t.Change(delay, InfiniteTimeSpan);
     }
 
     TimeSpan CalculateDelay()
     {
-        var nowUtc = DateTime.UtcNow;
+        var nowUtc = UtcNow;
         Next = schedule.GetNextOccurrence(Next);
         TimeSpan delay;
         if (tz != UTC)
@@ -67,7 +90,6 @@ public class CronTimer
         {
             delay = Next - nowUtc;
         }
-        //Console.WriteLine($"Now: {nowUtc} [utc] {now} [{tz}], Next: {next} [{tz}] {nextUtc} [utc], Delay: {delay}");
         if (delay < TimeSpan.Zero) delay = TimeSpan.Zero;
         return delay;
     }
