@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\CronTimer.csproj" />
+    <ProjectReference Include="..\CronTimer\CronTimer.csproj" />
   </ItemGroup>
 
 </Project>

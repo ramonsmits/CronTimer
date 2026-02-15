@@ -2,7 +2,7 @@
   <Folder Name="/Solution Items/">
     <File Path="../README.md" />
   </Folder>
-  <Project Path="../Demo/Demo.csproj" />
-  <Project Path="CronTimer.csproj" />
-  <Project Path="../CronTimer.Tests/CronTimer.Tests.csproj" />
+  <Project Path="CronTimer/CronTimer.csproj" />
+  <Project Path="CronTimer.Tests/CronTimer.Tests.csproj" />
+  <Project Path="Demo/Demo.csproj" />
 </Solution>
