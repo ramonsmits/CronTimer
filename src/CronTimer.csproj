@@ -7,15 +7,6 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <!-- AssemblyFileVersionAttribute -->
-    <FileVersion>2.0.0</FileVersion>
-    <!-- AssemblyInformationalVersionAttribute -->
-    <Version>$(FileVersion)</Version>
-    <!-- AssemblyVersionAttribute -->
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <Authors>ramonsmits</Authors>
     <Company>https://github.com/ramonsmits</Company>
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -27,27 +18,21 @@
     <IncludeSymbols>True</IncludeSymbols>
     <PackageId>CronTimer</PackageId>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://github.com/ramonsmits/CronTimer/tree/$(PackageVersion)</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/ramonsmits/CronTimer/tree/$(Version)</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes></PackageReleaseNotes>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageTags>cron timer</PackageTags>
-    <PackageVersion>$(Version)</PackageVersion>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <RepositoryUrl>https://github.com/ramonsmits/CronTimer</RepositoryUrl>
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MinVer" Version="6.0.0" PrivateAssets="All" />
     <PackageReference Include="ncrontab" Version="3.3.3" />
     <PackageReference Include="TimeZoneConverter" Version="6.1.0" />
   </ItemGroup>
-
-  <!--<ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions">
-      <Version>3.1.4</Version>
-    </PackageReference>
-  </ItemGroup>-->
 
   <ItemGroup>
     <None Include="../README.md" Pack="true" PackagePath="\"/>
